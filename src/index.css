@@ -1,0 +1,103 @@
+/* Tailwind CSS */
+@import "tailwindcss";
+
+/* ==============================
+   🌙 Dark Mode (default)
+   ============================== */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+
+  --Primary: #060b1b;
+  --Secondary: #7ee3ff;
+
+  --BG_gradient: linear-gradient(127deg, #070b1c 63.63%, #7ee3ff 142.58%);
+  --font_primary: #eeeeee;
+  --font_secondary: #7f7f7f;
+  --font_tertiary: #b8adad;
+  --font_quaternary: #666666;
+
+  --success: #64b883;
+  --error: #df5d5d;
+
+  --border_color: #f9f9f9;
+
+  font-family: "Garet", sans-serif;
+  color-scheme: dark;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==============================
+   ☀️ Light Mode
+   ============================== */
+.light {
+  --Primary: #ffffff;
+  --Secondary: #1b40e2;
+  --BG_gradient: linear-gradient(-24deg, #1b40e2 5%, #e3e3e3 45%);
+  --font_primary: #000000;
+  --font_secondary: #333333;
+}
+
+/* ==============================
+   Fonts
+   ============================== */
+@font-face {
+  font-family: "Garet";
+  src: url("/src/assets/fonts/Garet-Book.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Garet";
+  src: url("/src/assets/fonts/Garet-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ==============================
+   Base & Reset
+   ============================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--BG_gradient);
+  color: var(--font_primary);
+  font-family: "Garet", sans-serif;
+  transition: background 0.6s ease, color 0.3s ease;
+}
+
+body.fade {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+body.fade.active {
+  opacity: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+::selection {
+  background: var(--Secondary);
+  color: var(--Primary);
+}
