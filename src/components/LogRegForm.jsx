@@ -13,6 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../redux/store";
 import { SignupFunction } from "../redux/features/SignUp/SignupSlice";
+import { SigninFunction } from "../redux/features/SignIn/SigninSlice";
 
 const LogRegForm = ({ title }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +22,10 @@ const LogRegForm = ({ title }) => {
 
   const schema = isSignUp ? schemaRegister : schemaLogin;
   const dispatch = useAppDispatch();
-  const { isloading } = useSelector((state) => state.signup);
+  const { isloading:loadSignup } = useSelector((state) => state.signup);
+  const { isloading:loadSignin } = useSelector((state) => state.signin);
+
+  const loading = loadSignup || loadSignin;
 
   const {
     register,
@@ -36,6 +40,7 @@ const LogRegForm = ({ title }) => {
       dispatch(SignupFunction(data));
     } else {
       console.log("Login data:", data);
+        dispatch(SigninFunction(data));
     }
   };
 
@@ -545,7 +550,7 @@ const LogRegForm = ({ title }) => {
 
             {/* Submit Button */}
             <button className="mt-4 w-full bg-[var(--Secondary)] text-[var(--Primary)] rounded-lg py-2 font-medium text-[22px] hover:opacity-80 transition-all">
-              {isloading ? "Please wait..." : title}
+              {loading ? "Please wait..." : title}
             </button>
 
             {/* Switch Between Log In / Sign Up */}

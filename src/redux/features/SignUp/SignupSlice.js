@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { axiosAuth } from "../../../config";
+import {  baseURL } from "../../../config";
 import toast from "react-hot-toast";
 
 const initialState = {
@@ -12,7 +12,7 @@ export const SignupFunction = createAsyncThunk(
   async (data, thunkApi) => {
     const { rejectWithValue } = thunkApi;
     try {
-      const res = await axiosAuth.post("/register", data);
+      const res = await baseURL.post("/Authentication/register", data);
       if (res.status === 200) {
         toast.success("Successfully", {
           position: "bottom-center",
